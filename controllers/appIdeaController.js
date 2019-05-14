@@ -8,29 +8,29 @@ const AppIdeaController = {
     } catch (err) {
       console.log(err);
     }
+  },
+
+  show: async (req, res) => {
+    try {
+      const appIdeaId = req.params.id;
+      const appIdea = await AppIdea.findById(appIdeaId);
+      res.json(appIdea);
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+
+  create: async (req, res) => {
+    try {
+      const newAppIdea = req.body;
+      const savedAppIdea = await AppIdea.create(newAppIdea);
+      res.json(savedAppIdea);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
   }
-
-  //   show: async (req, res) => {
-  //     try {
-  //       const creatureId = req.params.id;
-  //       const creature = await Creature.findById(creatureId);
-  //       res.json(creature);
-  //     } catch (err) {
-  //       console.log(err);
-  //       res.json(err);
-  //     }
-  //   },
-
-  //   create: async (req, res) => {
-  //     try {
-  //       const newCreature = req.body;
-  //       const savedCreature = await Creature.create(newCreature);
-  //       res.json(savedCreature);
-  //     } catch (err) {
-  //       console.log(err);
-  //       res.status(500).json(err);
-  //     }
-  //   },
 
   //   update: async (req, res) => {
   //     try {
