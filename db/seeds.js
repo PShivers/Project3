@@ -1,8 +1,13 @@
-const AppIdea = require("../models/AppIdea.js");
+const AppIdea = require("../models/appIdea.js");
 
 // using Promises
-AppIdea.deleteMany().then(() => {
-    const nea = new AppIdea({name: "Nea", description: "Nea is a sleep tracking app that aim to improve sleep quality through data."});
+AppIdea.deleteMany()
+  .then(() => {
+    const nea = new AppIdea({
+      name: "Nea",
+      description:
+        "Nea is a sleep tracking app that aim to improve sleep quality through data."
+    });
     return nea.save();
   })
   .then(() => {
