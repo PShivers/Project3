@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const ideaistController = require("../controllers/ideaistController.js");
 
-router.route("/users").get(ideaistController.index);
-//   .post(ideaistController.create);
+router.get("/users", ideaistController.index);
+router.post("/users", ideaistController.create);
 
-// router.route('/:id')
-//   .get(ideaistController.show);
-//   .put(ideaistController.update);
-//   .delete(ideaistController.delete);
+router.get("/users/:id", ideaistController.show);
+router.put("/users/:id", ideaistController.update);
+router.delete("/users/:id", ideaistController.delete);
 
 module.exports = router;

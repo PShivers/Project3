@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const devsController = require("../controllers/devsController.js");
 
-router.route("/devs").get(devsController.index);
-//   .post(ideaistController.create);
+router.get("/devs", devsController.index);
+router.post("/devs", devsController.create);
 
-// router.route('/:id')
-//   .get(ideaistController.show);
-//   .put(ideaistController.update);
-//   .delete(ideaistController.delete);
+router.get("/devs/:id", devsController.show);
+router.put("/devs/:id", devsController.update);
+router.delete("/devs/:id",  devsController.delete);
 
 module.exports = router;
