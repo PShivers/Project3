@@ -1,4 +1,4 @@
-const AppIdea = require("../models/appIdea.js");
+const AppIdea = require("../models/appIdeaModel.js");
 
 const AppIdeaController = {
   index: async (req, res) => {

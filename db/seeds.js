@@ -1,6 +1,16 @@
-const AppIdea = require("../models/appIdea.js");
+const AppIdea = require("../models/appIdeaModel.js");
+const Ideaist = require("../models/ideaistModel.js");
 
-// using Promises
+//ideaist
+Ideaist.deleteMany().then(() => {
+  const nea = new Ideaist({
+    name: "Paul",
+    appIdeas: "appHole"
+  });
+  return nea.save();
+});
+
+//appideas
 AppIdea.deleteMany()
   .then(() => {
     const nea = new AppIdea({
