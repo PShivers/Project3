@@ -1,14 +1,54 @@
 const AppIdea = require("../models/appIdeaModel.js");
 const Ideaist = require("../models/ideaistModel.js");
+const Devs = require("../models/devsModel.js");
+
+//devs
+Devs.deleteMany()
+  .then(() => {
+    const Dev1 = new Devs({
+      name: "Dev1",
+      appIdeas: "we will see"
+    });
+    return Dev1.save();
+  })
+  .then(() => {
+    const Dev2 = new Devs({
+      name: "Dev2",
+      appIdeas: "Brazzers 4 kidz"
+    });
+    return Dev2.save();
+  })
+  .then(() => {
+    const Dev3 = new Devs({
+      name: "Dev3",
+      appIdeas: "Peter Pan Fanclub "
+    });
+    return Dev3.save();
+  });
 
 //ideaist
-Ideaist.deleteMany().then(() => {
-  const nea = new Ideaist({
-    name: "Paul",
-    appIdeas: "appHole"
+Ideaist.deleteMany()
+  .then(() => {
+    const Paul = new Ideaist({
+      name: "Paul",
+      appIdeas: "appHole"
+    });
+    return Paul.save();
+  })
+  .then(() => {
+    const Joe = new Ideaist({
+      name: "Joe",
+      appIdeas: "Brazzers 4 kidz"
+    });
+    return Joe.save();
+  })
+  .then(() => {
+    const Rufio = new Ideaist({
+      name: "Rufio",
+      appIdeas: "Peter Pan Fanclub "
+    });
+    return Rufio.save();
   });
-  return nea.save();
-});
 
 //appideas
 AppIdea.deleteMany()
