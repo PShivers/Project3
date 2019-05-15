@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-class Idea extends Component {
-  state = {  }
-  render() { 
-    return (  );
-  }
-}
+// class Idea extends Component {
+//   state = {  }
+//   render() { 
+//     return (  );
+//   }
+// }
  
-export default Idea;
+// export default Idea;

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+// import React, { Component } from 'react'
 
-class Ideaist extends Component {
-  state = {  }
-  render() { 
-    return (  );
-  }
-}
- 
-export default Ideaist;
+// class Ideaist extends Component {
+//   state = {  }
+//   render() {
+//     return (  );
+//   }
+// }
+
+// export default Ideaist;
