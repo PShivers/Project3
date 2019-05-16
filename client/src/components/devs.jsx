@@ -6,7 +6,7 @@ class Ideaist extends Component {
   render() {
     return (
       <div>
-        <h1>Im a list of Ideaists</h1>
+        <h1>Im a list of Devs</h1>
         <AppIdeas />
       </div>
     );

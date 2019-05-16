@@ -1,4 +1,4 @@
-const Devs = require("../models/devsModel.js");
+const Devs = require('../models/devsModel.js');
 
 const DevsController = {
   index: async (req, res) => {
@@ -51,7 +51,7 @@ const DevsController = {
       const devsId = req.params.id;
       await Devs.findByIdAndRemove(devsId);
       res.json({
-        msg: "Successfully Deleted"
+        msg: 'Successfully Deleted'
       });
     } catch (err) {
       console.log(err);
