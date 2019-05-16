@@ -1,26 +1,32 @@
 import React, { Component } from 'react';
 import AppIdeas from './appIdeas';
-import { getAppIdeas } from "../util.js";
+// import { getAppIdeas } from '../util.js';
+// import { Link } from 'react-router-dom';
 
 class Ideaist extends Component {
-  state = {
-    apps: []
-  };
+ 
+  // componentDidMount() {
+  //   //TODO: get list of favorite movies
+  //   // console.log("1. Favorites.js - favorites include: " + this.state.favorites)
+  //   getAppIdeas().then(apps => {
+  //     this.setState({ apps: apps });
+  //   });
+  // }
 
-  componentDidMount() {
-    //TODO: get list of favorite movies
-    // console.log("1. Favorites.js - favorites include: " + this.state.favorites)
-    getAppIdeas().then(apps => {
-      this.setState({ apps: apps });
-    });
-  }
-
-  state = {};
-  render() {
+  render(props) {
     return (
       <div>
         <h1>Im a list of Ideaists</h1>
-        <AppIdeas apps={this.state.apps} />
+
+        <div className="listOfIdeaists">
+          {this.props.ideaists.map(ideaist => (
+            <div >
+              {ideaist.name}
+            </div>
+          ))}
+        </div>
+
+        <AppIdeas apps={this.props.apps} />
       </div>
     );
   }

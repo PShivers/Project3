@@ -4,18 +4,26 @@ import React, { Component } from 'react';
 import Ideaist from './components/ideaist';
 import Devs from './components/devs';
 import { getIdeaists } from './util.js';
+import { getDevs } from './util.js';
 
 class App extends Component {
+
   state = {
     showDevs: true,
-    ideaists: [{name: "brad"}]
+    ideaists: [],
+    devs: [],
+    appIdeas: []
   };
 
   //when component loads display list of "ideaist"
   componentDidMount() {
-    console.log('1. mounting ideaist list, step 1 bayybeee');
-    getIdeaists().then(ideaists => {
-      this.setState({ ideaists });
+    getIdeaists().then(ideaistsList => {
+      console.log(ideaistsList.data)
+      this.setState({ ideaists: ideaistsList.data });
+    });
+    getDevs().then(devsList => {
+      console.log(devsList.data);
+      this.setState({ devs: devsList.data });
     });
   }
 
@@ -27,11 +35,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.toggleShowDevs}>Switch between list of Devs or Ideaists</button>
+        <button onClick={this.toggleShowDevs}>
+          Switch between list of Devs or Ideaists
+        </button>
         {this.state.showDevs ? (
-          <Ideaist list={this.state.ideaists} />
+          <Ideaist ideaists={this.state.ideaists} />
         ) : (
-          <Devs />
+          <Devs devs={this.state.devs} />
         )}
       </div>
     );
