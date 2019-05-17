@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import AppIdeas from './appIdeas';
-// import { getAppIdeas } from '../util.js';
-import { NavLink } from 'react-router-dom';
+
+//use to make every name link to their details page containing their apps etc
+// import { NavLink } from 'react-router-dom'; 
 
 class Ideaist extends Component {
   render(props) {
@@ -15,7 +15,7 @@ class Ideaist extends Component {
           ))}
         </div>
 
-        <NavLink to="/appIdeas">App Ideas</NavLink>
+        
       </div>
     );
   }

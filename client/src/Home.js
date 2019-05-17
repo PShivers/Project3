@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import AppIdeas from './components/appIdeas';
 // import Err from './components/error';
 import About from './components/about';
-import Ideaist from './components/ideaist';
+import Ideaists from './components/ideaists';
+import Ideaist from './components/singleIdeaist';
 import Nav from './components/nav';
 import Devs from './components/devs';
 import { getIdeaists } from './util.js';
@@ -40,6 +41,7 @@ class Home extends Component {
   // };
 
   render() {
+    const IdeaistsC = () => <Ideaists state={this.state} />;
     const IdeaistC = () => <Ideaist state={this.state} />;
     const DevsC = () => <Devs state={this.state} />;
 
@@ -50,7 +52,8 @@ class Home extends Component {
           <Switch>
             {/* <Route component={Err} /> */}
             <Route exact path="/about" component={About} />
-            <Route exact path="/ideaists" component={IdeaistC} />
+            <Route exact path="/ideaists" component={IdeaistsC} />
+            <Route exact path="/ideaist" component={IdeaistC} />
             <Route exact path="/devs" component={DevsC} />
             
           </Switch>

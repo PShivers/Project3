@@ -14,7 +14,6 @@ class Devs extends Component {
             </div>
           ))}
         </div>
-        <NavLink to="/appIdeas">App Ideas</NavLink>
       </div>
     );
   }

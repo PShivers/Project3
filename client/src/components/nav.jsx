@@ -13,7 +13,7 @@ class Nav extends Component {
         <br/>
         <NavLink to="/ideaists">Ideaists</NavLink>
         <br/>
-        <br/>
+        <br/>  
         <NavLink to="/devs">Developers</NavLink>
       </div>
     );
