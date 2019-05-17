@@ -1,20 +1,15 @@
 import axios from 'axios';
 
 export function getIdeaists() {
-  // console.log(
-  //   '2. getIdeaists in util.js making axios get req to server/ideaistroutes'
-  // );
   return axios.get('/users');
 }
 
-export function getDevs(apps) {
-  // console.log('2. getFavorites in util.js hit. =>' + favorites)
+export function getDevs() {
   return axios.get('./devs')
 }
 
-export function getAppIdeas(apps) {
-  // console.log('2. getFavorites in util.js hit. =>' + favorites)
-  return axios.get('./appIdeas').then(results => results.data);
+export function getApps() {
+  return axios.get('./appIdeas');
 }
 
 
