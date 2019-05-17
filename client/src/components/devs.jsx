@@ -8,11 +8,15 @@ class Devs extends Component {
       <div>
         <h1>Devs:</h1>
         <div className="listOfDevs">
-          {this.props.state.devs.map(devs => (
-            <div >
-              {devs.name}
-            </div>
-          ))}
+          <ol>
+            {this.props.state.devs.map(devs => (
+              <li>
+                <h2>
+                  <NavLink to="/dev">{devs.name}</NavLink>
+                </h2>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     );
