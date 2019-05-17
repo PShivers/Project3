@@ -6,7 +6,7 @@ class AppIdeas extends Component {
   render() {
     return (
       <div>
-        <h1>Im a list of app ideas</h1>
+        <h1>app ideas</h1>
         <AppIdea />
       </div>
     );

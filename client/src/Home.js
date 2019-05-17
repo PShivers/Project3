@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './components/about';
 import Ideaist from './components/ideaist';
 import Nav from './components/nav';
-// import Devs from './components/devs';
+import Devs from './components/devs';
 import { getIdeaists } from './util.js';
 import { getDevs } from './util.js';
 import { getApps } from './util.js';
@@ -40,7 +40,8 @@ class Home extends Component {
   // };
 
   render() {
-    // const Ideaist = () => <Ideaist state={this.state.ideaists} />;
+    const IdeaistC = () => <Ideaist state={this.state} />;
+    const DevsC = () => <Devs state={this.state} />;
 
     return (
       <Router>
@@ -49,23 +50,9 @@ class Home extends Component {
           <Switch>
             {/* <Route component={Err} /> */}
             <Route exact path="/about" component={About} />
-            {/* <Route exact path="/ideaists" component={Ideaist} /> */}
-            <Route
-              exact
-              path="/ideaists"
-              render={props => (
-                <Ideaist {...this.state.ideaists} isAuthed={true} />
-              )}
-            />
-
-            {/* <button onClick={this.toggleShowDevs}>
-          Switch between list of Devs or Ideaists
-        </button> */}
-            {/* {this.state.showDevs ? ( */}
-            {/* <Ideaist state={this.state} /> */}
-            {/* ) : ( */}
-            {/* <Devs devs={this.state.devs} /> */}
-            {/* )} */}
+            <Route exact path="/ideaists" component={IdeaistC} />
+            <Route exact path="/devs" component={DevsC} />
+            
           </Switch>
         </div>
       </Router>

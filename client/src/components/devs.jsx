@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import AppIdeas from './appIdeas';
+import { NavLink } from 'react-router-dom';
 
 class Devs extends Component {
   state = {};
   render() {
     return (
       <div>
-        <h1>Im a list of Devs</h1>
+        <h1>Devs:</h1>
         <div className="listOfDevs">
-          {this.props.devs.map(devs => (
+          {this.props.state.devs.map(devs => (
             <div >
               {devs.name}
             </div>
           ))}
         </div>
-        <AppIdeas />
+        <NavLink to="/appIdeas">App Ideas</NavLink>
       </div>
     );
   }
