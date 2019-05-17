@@ -11,11 +11,9 @@ class Devs extends Component {
         <div className="listOfDevs">
           <ol>
             {this.props.state.devs.map(devs => (
-              <li>
-                <h2>
+                <li key={devs._id}>
                   <Link to="/dev">{devs.name}</Link>
-                </h2>
-              </li>
+                </li>
             ))}
           </ol>
         </div>

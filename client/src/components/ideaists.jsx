@@ -12,7 +12,7 @@ class Ideaist extends Component {
         <div className="listOfIdeaists">
           <ol>
             {this.props.state.ideaists.map(ideaist => (
-              <li>
+              <li key={ideaist._id}>
                 <h2>
                   <NavLink to="/ideaist">{ideaist.name}</NavLink>
                 </h2>
