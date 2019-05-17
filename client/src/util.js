@@ -4,14 +4,24 @@ export function getIdeaists() {
   return axios.get('/users');
 }
 
-export function getDevs() {
-  return axios.get('./devs')
+export function createIdeaist(newIdeaist) {
+  console.log(newIdeaist)
+  return axios.post('/users',newIdeaist);
 }
+
+export function getDevs() {
+  return axios.get('/devs')
+}
+
+export function createDev(newDev) {
+  console.log(newDev)
+  return axios.post('/devs',newDev);
+}
+
 
 export function getApps() {
-  return axios.get('./appIdeas');
+  return axios.get('/appIdeas');
 }
-
 
 
 //2.

@@ -23,6 +23,7 @@ const IdeaistController = {
 
   create: async (req, res) => {
     try {
+      console.log(req.body)
       const newIdeaist = req.body;
       const savedIdeaist = await Ideaist.create(newIdeaist);
       res.json(savedIdeaist);

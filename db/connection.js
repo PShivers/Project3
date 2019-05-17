@@ -1,18 +1,18 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI);
 } else {
-  mongoose.connect("mongodb://localhost/bog1");
+  mongoose.connect('mongodb://localhost/project3');
 }
 
-mongoose.connection.on("error", error => {
+mongoose.connection.on('error', error => {
   console.error(`MongoDB connection error!!! ${error}`);
   process.exit(-1);
 });
 
-mongoose.connection.once("open", () => {
+mongoose.connection.once('open', () => {
   console.log(`Mongoose has connected to MongoDB`);
 });
 

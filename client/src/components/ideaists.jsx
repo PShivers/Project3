@@ -3,8 +3,6 @@ import React, { Component } from 'react';
 //use to make every name link to their details page containing their apps etc
 import { NavLink } from 'react-router-dom';
 
-
-
 class Ideaist extends Component {
   render(props) {
     return (
