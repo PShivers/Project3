@@ -12,6 +12,7 @@ const IdeaistController = {
 
   show: async (req, res) => {
     try {
+      console.log(req.params.id)
       const ideaistId = req.params.id;
       const ideaist = await Ideaist.findById(ideaistId);
       res.json(ideaist);

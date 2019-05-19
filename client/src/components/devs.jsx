@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Devs extends Component {
-  state = {};
   render() {
     return (
       <div>
@@ -10,11 +9,14 @@ class Devs extends Component {
 
         <div className="listOfDevs">
           <ol>
-            {this.props.state.devs.map(devs => (
+            {this.props.state.devs.map(devs => {
+              let linkVar = `/devs/${devs._id}`;
+              return(
                 <li key={devs._id}>
-                  <Link to="/dev">{devs.name}</Link>
+                  <Link to={linkVar}>{devs.name}</Link>
                 </li>
-            ))}
+              )
+            })}
           </ol>
         </div>
 

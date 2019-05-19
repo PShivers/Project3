@@ -11,6 +11,7 @@ import SingleDev from './components/singleDev';
 import AppIdeas from './components/appIdeas';
 import Err from './components/error';
 import { getIdeaists } from './util.js';
+import { getIdeaist } from './util.js';
 import { createIdeaist } from './util.js';
 import { createDev } from './util.js';
 import { getDevs } from './util.js';
@@ -18,8 +19,8 @@ import { getApps } from './util.js';
 
 class Home extends Component {
   state = {
-    showDevs: true,
     ideaists: [],
+    ideaist: [],
     devs: [],
     appIdeas: []
   };
@@ -44,7 +45,8 @@ class Home extends Component {
       });
     });
   };
-  //define createDev in 
+
+  //define createDev in
   addNewDevToDevList = newDev => {
     createDev(newDev).then(() => {
       getDevs().then(devsList => {
@@ -53,15 +55,33 @@ class Home extends Component {
     });
   };
 
+  populateIdeaistInfo = function(id) {
+    // console.log(id);
+    getIdeaist(id).then(ideaist => {
+      this.setState({ ideaist: ideaist.data });
+    });
+  };
+
   render() {
+    // console.log(this.state)
+
+    const AboutC = routeProps => <About {...routeProps} />;
     const IdeaistsC = () => <Ideaists state={this.state} />;
+    
     const CreateIdeaistC = () => (
       <CreateIdeaist
         state={this.state}
         addNewIdeaistToIdeaistList={this.addNewIdeaistToIdeaistList}
       />
     );
-    const IdeaistC = () => <Ideaist state={this.state} />;
+    //https://medium.com/alturasoluciones/how-to-pass-props-to-routes-components-29f5443eee94
+    const IdeaistC = routeProps => (
+      <Ideaist
+        {...routeProps}
+        state={this.state}
+        populateIdeaistInfo={this.populateIdeaistInfo}
+      />
+    );
     const DevsC = () => <Devs state={this.state} />;
     const CreateDevC = () => (
       <CreateDev
@@ -77,15 +97,15 @@ class Home extends Component {
         <div>
           <Nav />
           <Switch>
-            <Route exact path="/about" component={About} />
+            <Route exact path="/about" render={AboutC} />
 
             <Route exact path="/ideaists" component={IdeaistsC} />
             <Route exact path="/ideaists/create" component={CreateIdeaistC} />
-            <Route exact path="/ideaist" component={IdeaistC} />
+            <Route exact path="/ideaists/:id" component={IdeaistC} />
 
             <Route exact path="/devs" component={DevsC} />
             <Route exact path="/devs/create" component={CreateDevC} />
-            <Route exact path="/dev" component={SingleDevC} />
+            <Route exact path="/devs/:id" component={SingleDevC} />
 
             <Route exact path="/appideas" component={AppIdeasC} />
 

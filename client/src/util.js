@@ -4,6 +4,11 @@ export function getIdeaists() {
   return axios.get('/users');
 }
 
+export function getIdeaist(id) {
+  console.log(id)
+  return axios.get(`/users/${id}`);
+}
+
 export function createIdeaist(newIdeaist) {
   console.log(newIdeaist)
   return axios.post('/users',newIdeaist);

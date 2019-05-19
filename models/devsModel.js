@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Devs = new Schema({
   name: String,
-  apps: String
+  apps: []
 });
 
 module.exports = mongoose.model("Devs", Devs);
