@@ -52,6 +52,7 @@ const IdeaistController = {
 
   delete: async (req, res) => {
     try {
+      console.log(req.params.id)
       const ideaistId = req.params.id;
       await Ideaist.findByIdAndRemove(ideaistId);
       res.json({

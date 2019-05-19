@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Ideaist extends Component {
+
+  componentDidMount(){
+    
+  }
   state={}
   render() {
     console.log(this.props)

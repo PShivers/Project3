@@ -5,7 +5,7 @@ export function getIdeaists() {
 }
 
 export function getIdeaist(id) {
-  console.log(id)
+  console.log("3. axios req received this " + id)
   return axios.get(`/users/${id}`);
 }
 
@@ -14,14 +14,30 @@ export function createIdeaist(newIdeaist) {
   return axios.post('/users',newIdeaist);
 }
 
+export function deleteIdeaist(id) {
+  return axios.delete(`/users/${id}`);
+}
+
 export function getDevs() {
   return axios.get('/devs')
+}
+
+//return single Developer
+export function getDev(id) {
+  console.log("3.getdev axios req received this " + id)
+  return axios.get(`/devs/${id}`);
 }
 
 export function createDev(newDev) {
   console.log(newDev)
   return axios.post('/devs',newDev);
 }
+
+//delete single Developer
+export function deleteDev(id) {
+  return axios.delete(`/devs/${id}`);
+}
+
 
 
 export function getApps() {

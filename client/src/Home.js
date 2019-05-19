@@ -11,8 +11,9 @@ import SingleDev from './components/singleDev';
 import AppIdeas from './components/appIdeas';
 import Err from './components/error';
 import { getIdeaists } from './util.js';
-import { getIdeaist } from './util.js';
+// import { getIdeaist } from './util.js';
 import { createIdeaist } from './util.js';
+import { deleteIdeaist } from './util.js';
 import { createDev } from './util.js';
 import { getDevs } from './util.js';
 import { getApps } from './util.js';
@@ -55,19 +56,24 @@ class Home extends Component {
     });
   };
 
-  populateIdeaistInfo = function(id) {
-    // console.log(id);
-    getIdeaist(id).then(ideaist => {
-      this.setState({ ideaist: ideaist.data });
-    });
-  };
+  // populateIdeaistInfo = function(id) {
+  //   console.log("2. populateidaistinfo is passing this to an axios request " + id);
+  //   getIdeaist(id).then(ideaist => {
+  //     console.log(ideaist)
+  //     this.setState({ ideaist: ideaist });
+  //   });
+  // };
+
+  deleteIdeaist(id) {
+    deleteIdeaist().then();
+  }
 
   render() {
     // console.log(this.state)
 
     const AboutC = routeProps => <About {...routeProps} />;
     const IdeaistsC = () => <Ideaists state={this.state} />;
-    
+
     const CreateIdeaistC = () => (
       <CreateIdeaist
         state={this.state}
@@ -89,7 +95,9 @@ class Home extends Component {
         addNewDevToDevList={this.addNewDevToDevList}
       />
     );
-    const SingleDevC = () => <SingleDev state={this.state} />;
+    const SingleDevC = routeProps => (
+      <SingleDev {...routeProps} state={this.state} />
+    );
     const AppIdeasC = () => <AppIdeas state={this.state} />;
 
     return (
