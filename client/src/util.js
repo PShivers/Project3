@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+
+//==============================
+//====  Ideaists  ==============
+//==============================
+
 export function getIdeaists() {
   return axios.get('/users');
 }
@@ -14,9 +19,18 @@ export function createIdeaist(newIdeaist) {
   return axios.post('/users',newIdeaist);
 }
 
+export function updateIdeaist(id) {
+  console.log(id)
+  return axios.put('/users/:id',id);
+}
+
 export function deleteIdeaist(id) {
   return axios.delete(`/users/${id}`);
 }
+
+//==============================
+//====  Devs  ==================
+//==============================
 
 export function getDevs() {
   return axios.get('/devs')
@@ -38,7 +52,9 @@ export function deleteDev(id) {
   return axios.delete(`/devs/${id}`);
 }
 
-
+//==============================
+//====  App Ideas ==============
+//==============================
 
 export function getApps() {
   return axios.get('/appIdeas');

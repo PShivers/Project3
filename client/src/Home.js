@@ -39,6 +39,13 @@ class Home extends Component {
     });
   }
 
+  //broken function that should fire when ideaists component mounts. not sure why broken.
+  // getIdeaistsList() {
+  //   getIdeaists.then(ideaistsList => {
+  //     this.setState({ ideaists: ideaistsList.data });
+  //   });
+  // }
+  
   addNewIdeaistToIdeaistList = newIdeaist => {
     createIdeaist(newIdeaist).then(() => {
       getIdeaists().then(ideaistsList => {
@@ -72,7 +79,13 @@ class Home extends Component {
     // console.log(this.state)
 
     const AboutC = routeProps => <About {...routeProps} />;
-    const IdeaistsC = () => <Ideaists state={this.state} />;
+    const IdeaistsC = routeProps => (
+      <Ideaists
+        {...routeProps}
+        state={this.state}
+        getIdeaistsList={this.getIdeaistsList}
+      />
+    );
 
     const CreateIdeaistC = () => (
       <CreateIdeaist

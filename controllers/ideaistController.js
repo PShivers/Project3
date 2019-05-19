@@ -36,6 +36,7 @@ const IdeaistController = {
 
   update: async (req, res) => {
     try {
+      console.log('update got to controller' + req.params.id)
       const ideaistId = req.params.id;
       const updatedIdeaist = req.body;
       const savedIdeaist = await Ideaist.findByIdAndUpdate(
