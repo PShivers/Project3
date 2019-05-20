@@ -22,7 +22,7 @@ class Ideaist extends Component {
 
   handleDelete(id) {
     deleteIdeaist(id).then(() => {
-      // this.props.refresh();
+      this.props.refresh();
     });
   }
 
@@ -55,7 +55,7 @@ class Ideaist extends Component {
     let linkVar = `/appideas/${ideaist._id}`;
     return (
       <div>
-        <h1>Ideaist Details:</h1>
+        <h1>Ideaist Details</h1>
         <h2>Name: {ideaist.name}</h2>
         <Link to={linkVar}>App Ideas</Link>
         <br />

@@ -5,16 +5,18 @@ class Devs extends Component {
   render() {
     return (
       <div>
-        <h1>Devs:</h1>
+        <h1>Devs</h1>
 
         <div className="listOfDevs">
           <ol>
             {this.props.state.devs.map(devs => {
               let linkVar = `/devs/${devs._id}`;
               return(
+                <h2>
                 <li key={devs._id}>
                   <Link to={linkVar}>{devs.name}</Link>
                 </li>
+                </h2>
               )
             })}
           </ol>

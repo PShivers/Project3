@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import img from '../images/memphis-mini-dark.png';
 
 const Title = styled.h1`
-  background:blue;
-  color: red;
+  color: palevioletred;
+  text-shadow: 2px 2px 6px yellow;
+  font-family: 'Source Sans Pro', sans-serif;
 `
+// background-image: url(${img});
 const Navi = styled.div`
+height: 20vh
+font-family: 'Source Sans Pro', sans-serif;
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
+align-items: center;
+font-size: 2em;
 `
 
 class Nav extends Component {
@@ -16,15 +23,12 @@ class Nav extends Component {
   render() {
     return (
       <div className="nav">
-        <Title>Welcome to appBay</Title>
         <Navi>
-        <h2> NavBar </h2>
-        <Link to="/about">About appHole</Link>
-        <br/>
-        <br/>
+        <Title>appBay</Title>
+        <Link to="/about">About appBae</Link>
+        
         <Link to="/ideaists" >Ideaists</Link>
-        <br/>
-        <br/>  
+       
         <Link to="/devs">Developers</Link>
         </Navi>
       </div>

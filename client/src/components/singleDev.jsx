@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // import AppIdeas from './appIdeas';
 // import { getAppIdeas } from '../util.js';
 import { Link } from 'react-router-dom';
-// import { getDev } from '../util';
 import { getDev, deleteDev, updateDev } from '../util';
 
 class SingleDev extends Component {
@@ -36,8 +35,7 @@ class SingleDev extends Component {
   handleUpdate = event => {
     event.preventDefault();
     console.log('update clicked');
-    updateDev(this.state.newDev)
-    .then(() => {
+    updateDev(this.state.newDev).then(() => {
       getDev(this.props.match.params.id).then(dev => {
         this.setState({ developer: dev.data });
       });
@@ -46,7 +44,7 @@ class SingleDev extends Component {
 
   handleDelete(id) {
     deleteDev(id).then(() => {
-      // this.props.refresh();
+      this.props.refresh();
     });
   }
 
@@ -72,13 +70,14 @@ class SingleDev extends Component {
         </form>
 
         <br />
-        <button
+        <Link
+          to="../devs"
           onClick={() => {
             this.handleDelete(this.props.match.params.id);
           }}
         >
           Delete Ideaist
-        </button>
+        </Link>
       </div>
     );
   }

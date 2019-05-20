@@ -13,17 +13,13 @@ class CreateIdeaist extends Component {
   handleNewIdeaistChange = event => {
     const attributeName = event.target.name;
     const attributeValue = event.target.value;
-
     const newIdeaist = { ...this.state.newIdeaist };
     newIdeaist[attributeName] = attributeValue;
-
     this.setState({ newIdeaist });
   };
 
   addNewIdeaist = event => {
     event.preventDefault();
-    console.log(this.state.newIdeaist);
-
     this.props.addNewIdeaistToIdeaistList(this.state.newIdeaist);
   };
 

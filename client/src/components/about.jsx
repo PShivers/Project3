@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
+const Para = styled.p`
+  margin: 5% 20%;
+`;
 
 class About extends Component {
-    state = {  }
-    render() { 
-        console.log(this.props)
-        return ( <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam corporis eligendi nobis. Debitis unde perspiciatis dicta labore nostrum saepe illum! Eum architecto modi error inventore voluptatibus laudantium repellendus harum enim.</p> );
-    }
+  state = {};
+  render() {
+    // console.log(this.props);
+    return (
+      <div>
+        <Para>
+          AppBay is the site where wings take dreams. It connects people who
+          know how to build apps(Developers) with people who have a great idea
+          for an app, but dont have the time/knowledge to make their idea a
+          reality(Ideaists). Eventually their will be a way for developers to
+          buy/license/bid on app ideas they'd like to build. This will allow the
+          people with that one in a million idea to actually see their app in
+          action.
+        </Para>
+      </div>
+    );
+  }
 }
- 
+
 export default About;

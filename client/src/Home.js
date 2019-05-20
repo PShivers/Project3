@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
 import Nav from './components/nav';
 import About from './components/about';
 import Ideaists from './components/ideaists';
@@ -19,6 +20,18 @@ import {
   createDev,
   getApps
 } from './util.js';
+import img from '../src/images/memphis-mini-dark.png';
+
+const Main = styled.div`
+  display: flex;
+  justify-content: center;
+  color: papayawhip;
+`;
+
+const BGImg = styled.div`
+  background-image: url(${img});
+  height: 100vh;
+`;
 
 class Home extends Component {
   state = {
@@ -54,7 +67,15 @@ class Home extends Component {
 
   refresh = () => {
     getIdeaists().then(ideaistsList => {
-      this.setState({ ideaists: ideaistsList });
+      getDevs().then(devsList => {
+        getApps().then(appIdeasList => {
+          this.setState({
+            ideaists: ideaistsList.data,
+            devs: devsList.data,
+            appIdeas: appIdeasList.data
+          });
+        });
+      });
     });
   };
 
@@ -111,30 +132,38 @@ class Home extends Component {
       />
     );
     const SingleDevC = routeProps => (
-      <SingleDev {...routeProps} state={this.state} />
+      <SingleDev {...routeProps} state={this.state} refresh={this.refresh} />
     );
     const AppIdeasC = () => <AppIdeas state={this.state} />;
 
     return (
       <Router>
         <div>
-          <Nav />
-          <Switch>
-            <Route exact path="/about" render={AboutC} />
+          <BGImg>
+            <Nav />
+            <Main>
+              <Switch>
+                <Route exact path="/about" render={AboutC} />
 
-            <Route exact path="/ideaists" component={IdeaistsC} />
-            <Route exact path="/ideaists/create" component={CreateIdeaistC} />
-            <Route exact path="/ideaists/:id" component={IdeaistC} />
+                <Route exact path="/ideaists" component={IdeaistsC} />
+                <Route
+                  exact
+                  path="/ideaists/create"
+                  component={CreateIdeaistC}
+                />
+                <Route exact path="/ideaists/:id" component={IdeaistC} />
 
-            <Route exact path="/devs" component={DevsC} />
-            <Route exact path="/devs/create" component={CreateDevC} />
-            <Route exact path="/devs/:id" component={SingleDevC} />
+                <Route exact path="/devs" component={DevsC} />
+                <Route exact path="/devs/create" component={CreateDevC} />
+                <Route exact path="/devs/:id" component={SingleDevC} />
 
-            <Route exact path="/appideas" component={AppIdeasC} />
+                <Route exact path="/appideas" component={AppIdeasC} />
 
-            {/* need to get error to override nav bar */}
-            <Route component={Err} />
-          </Switch>
+                {/* need to get error to override nav bar */}
+                <Route component={Err} />
+              </Switch>
+            </Main>
+          </BGImg>
         </div>
       </Router>
     );
