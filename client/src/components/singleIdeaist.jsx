@@ -3,56 +3,51 @@ import { Link } from 'react-router-dom';
 // import AppIdeas from './appIdeas';
 // import { getAppIdeas } from '../util.js';
 
-import { getIdeaist } from '../util.js';
-import { deleteIdeaist } from '../util.js';
-import { updateIdeaist } from '../util.js';
+import { getIdeaist, deleteIdeaist, updateIdeaist } from '../util.js';
 
 class Ideaist extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
+      newIdeaist: {},
       ideaist: []
-    }
+    };
   }
 
   componentDidMount() {
-    getIdeaist(this.props.match.params.id).then(ideaist =>{
-      this.setState({ideaist: ideaist.data})
-    })
-  } 
-
-  // componentDidMount() {
-  //   console.log('1. component mounting and passing this to home '+this.props.match.params.id)
-  //   this.props.populateIdeaistInfo(this.props.match.params.id)
-  // } 
-
-  handleDelete() {
-    console.log("delete clicked" + this.props.match.params.id)
-    deleteIdeaist(this.props.match.params.id)
+    getIdeaist(this.props.match.params.id).then(ideaist => {
+      this.setState({ ideaist: ideaist.data });
+    });
   }
 
-  handleUpdate() {
-    console.log("update clicked" + this.props.match.params.id)
-    updateIdeaist(this.props.match.params.id).then(ideaist =>{
-      console.log(ideaist)
-    })
+  handleDelete(id) {
+    deleteIdeaist(id).then(() => {
+      // this.props.refresh();
+    });
   }
 
-  handleNewIdeaistName = event => {
-    console.log('submit clicked')
+  handleChange = event => {
     const attributeName = event.target.name;
     const attributeValue = event.target.value;
-
-    const newIdeaist = { ...this.state.newIdeaist };
+    const newIdeaist = { ...this.state.Ideaist };
     newIdeaist[attributeName] = attributeValue;
+    newIdeaist._id = this.state.ideaist._id;
+    this.setState({ newIdeaist: newIdeaist, }, function() {
+      // console.log(this.state.ideaist);
+      console.log(this.state.newIdeaist);
+    });
+  };
 
-    this.setState({ newIdeaist });
+  handleUpdate = event => {
+    event.preventDefault();
+    console.log('update clicked');
+    updateIdeaist(this.state.newIdeaist);
   };
 
   render() {
     // console.log(this.props)
-    const ideaist= this.state.ideaist;
-    let linkVar = `/appideas/${ideaist._id}`
+    const ideaist = this.state.ideaist;
+    let linkVar = `/appideas/${ideaist._id}`;
     return (
       <div>
         <h1>Ideaist Details:</h1>
@@ -61,10 +56,26 @@ class Ideaist extends Component {
         <br />
         <br />
         {/* https://www.meteor.com/tutorials/react/update-and-remove */}
-        <input type="text" name="name" placeholder='New Name' onChange={this.handleNewIdeaistName}/>
-        <input type='submit' value='Edit Name'/>
+
+        <form onSubmit={this.handleUpdate}>
+          <input
+            type="text"
+            name="name"
+            placeholder="New Name"
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Edit Name" />
+        </form>
+
         <br />
-        <button onClick={this.handleDelete.bind(this)}>Delete Account</button>
+        <Link
+          to="../ideaists"
+          onClick={() => {
+            this.handleDelete(this.props.match.params.id);
+          }}
+        >
+          DELETE Account
+        </Link>
       </div>
     );
   }

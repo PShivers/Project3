@@ -10,7 +10,7 @@ export function getIdeaists() {
 }
 
 export function getIdeaist(id) {
-  console.log("3. axios req received this " + id)
+  // console.log("3. axios req received this " + id)
   return axios.get(`/users/${id}`);
 }
 
@@ -19,9 +19,9 @@ export function createIdeaist(newIdeaist) {
   return axios.post('/users',newIdeaist);
 }
 
-export function updateIdeaist(id) {
-  console.log(id)
-  return axios.put('/users/:id',id);
+export function updateIdeaist(ideaist) {
+  // console.log(ideaist)
+  return axios.put(`/users/${ideaist._id}`,ideaist);
 }
 
 export function deleteIdeaist(id) {

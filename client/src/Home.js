@@ -10,18 +10,19 @@ import CreateDev from './components/createDev';
 import SingleDev from './components/singleDev';
 import AppIdeas from './components/appIdeas';
 import Err from './components/error';
-import { getIdeaists } from './util.js';
-// import { getIdeaist } from './util.js';
-import { createIdeaist } from './util.js';
-import { deleteIdeaist } from './util.js';
-import { createDev } from './util.js';
-import { getDevs } from './util.js';
-import { getApps } from './util.js';
+import {
+  createIdeaist,
+  getIdeaists,
+  deleteIdeaist,
+  // updateIdeaist,
+  getDevs,
+  createDev,
+  getApps
+} from './util.js';
 
 class Home extends Component {
   state = {
     ideaists: [],
-    ideaist: [],
     devs: [],
     appIdeas: []
   };
@@ -29,13 +30,15 @@ class Home extends Component {
   //when component loads display list of "ideaist"
   componentDidMount() {
     getIdeaists().then(ideaistsList => {
-      this.setState({ ideaists: ideaistsList.data });
-    });
-    getDevs().then(devsList => {
-      this.setState({ devs: devsList.data });
-    });
-    getApps().then(appIdeasList => {
-      this.setState({ appIdeas: appIdeasList.data });
+      getDevs().then(devsList => {
+        getApps().then(appIdeasList => {
+          this.setState({
+            ideaists: ideaistsList.data,
+            devs: devsList.data,
+            appIdeas: appIdeasList.data
+          });
+        });
+      });
     });
   }
 
@@ -45,7 +48,27 @@ class Home extends Component {
   //     this.setState({ ideaists: ideaistsList.data });
   //   });
   // }
-  
+
+  handleDelete(id) {
+    console.log('delete clicked' + id);
+    deleteIdeaist(id).then(() => {
+      getIdeaists().then(ideaistsList => {
+        console.log(this.state);
+        // this.setState({ ideaists: ideaistsList.data });
+      });
+    });
+  }
+
+  // updateIdeaist = ideaist => {
+  //   updateIdeaist(ideaist).then(console.log(ideaist));
+  // };
+
+  refresh = () => {
+    getIdeaists().then(ideaistsList => {
+      this.setState({ ideaists: ideaistsList });
+    });
+  };
+
   addNewIdeaistToIdeaistList = newIdeaist => {
     createIdeaist(newIdeaist).then(() => {
       getIdeaists().then(ideaistsList => {
@@ -71,10 +94,6 @@ class Home extends Component {
   //   });
   // };
 
-  deleteIdeaist(id) {
-    deleteIdeaist().then();
-  }
-
   render() {
     // console.log(this.state)
 
@@ -98,6 +117,8 @@ class Home extends Component {
       <Ideaist
         {...routeProps}
         state={this.state}
+        refresh={this.refresh}
+        updateIdeaist={this.updateIdeaist}
         populateIdeaistInfo={this.populateIdeaistInfo}
       />
     );
