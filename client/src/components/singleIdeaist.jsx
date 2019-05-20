@@ -32,7 +32,7 @@ class Ideaist extends Component {
     const newIdeaist = { ...this.state.Ideaist };
     newIdeaist[attributeName] = attributeValue;
     newIdeaist._id = this.state.ideaist._id;
-    this.setState({ newIdeaist: newIdeaist, }, function() {
+    this.setState({ newIdeaist: newIdeaist }, function() {
       // console.log(this.state.ideaist);
       console.log(this.state.newIdeaist);
     });
@@ -41,7 +41,12 @@ class Ideaist extends Component {
   handleUpdate = event => {
     event.preventDefault();
     console.log('update clicked');
-    updateIdeaist(this.state.newIdeaist);
+    updateIdeaist(this.state.newIdeaist)
+    .then(() => {
+      getIdeaist(this.props.match.params.id).then(ideaist => {
+        this.setState({ ideaist: ideaist.data });
+      });
+    });
   };
 
   render() {

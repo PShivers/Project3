@@ -42,13 +42,6 @@ class Home extends Component {
     });
   }
 
-  //broken function that should fire when ideaists component mounts. not sure why broken.
-  // getIdeaistsList() {
-  //   getIdeaists.then(ideaistsList => {
-  //     this.setState({ ideaists: ideaistsList.data });
-  //   });
-  // }
-
   handleDelete(id) {
     console.log('delete clicked' + id);
     deleteIdeaist(id).then(() => {
@@ -58,10 +51,6 @@ class Home extends Component {
       });
     });
   }
-
-  // updateIdeaist = ideaist => {
-  //   updateIdeaist(ideaist).then(console.log(ideaist));
-  // };
 
   refresh = () => {
     getIdeaists().then(ideaistsList => {
@@ -85,14 +74,6 @@ class Home extends Component {
       });
     });
   };
-
-  // populateIdeaistInfo = function(id) {
-  //   console.log("2. populateidaistinfo is passing this to an axios request " + id);
-  //   getIdeaist(id).then(ideaist => {
-  //     console.log(ideaist)
-  //     this.setState({ ideaist: ideaist });
-  //   });
-  // };
 
   render() {
     // console.log(this.state)

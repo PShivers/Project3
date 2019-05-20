@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-// import {getIdeaists} from '../util'
 
 //use to make every name link to their details page containing their apps etc
 import { Link } from 'react-router-dom';
+import { getIdeaist, getIdeaists } from '../util';
 
 class Ideaist extends Component {
 
-  //part of a failed attempt to load idealist separately from devlist and stop memleaks/not rendering deleted users
-  // componentDidMount(){
-  //     this.props.getIdeaistsList()
-  //   }
 
   render() {
-    // console.log(this.props)
-
     return (
       <div>
         <h1>Ideaists:</h1>
