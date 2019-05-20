@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 // import AppIdeas from './appIdeas';
 // import { getAppIdeas } from '../util.js';
 import { Link } from 'react-router-dom';
-import { getDev } from '../util';
-import { deleteDev } from '../util';
+// import { getDev } from '../util';
+import { getDev, deleteDev, updateDev } from '../util';
 
 class SingleDev extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      newDev: {},
       developer: []
     };
   }
@@ -20,10 +21,28 @@ class SingleDev extends Component {
     });
   }
 
-  // handleDelete() {
-  //   console.log("delete clicked" + this.props.match.params.id)
-  //   deleteDev(this.props.match.params.id)
-  // }
+  handleChange = event => {
+    const attributeName = event.target.name;
+    const attributeValue = event.target.value;
+    const newDev = { ...this.state.developer };
+    newDev[attributeName] = attributeValue;
+    newDev._id = this.state.developer._id;
+    this.setState({ newDev: newDev }, function() {
+      // console.log(this.state.developer);
+      console.log(this.state.newDev);
+    });
+  };
+
+  handleUpdate = event => {
+    event.preventDefault();
+    console.log('update clicked');
+    updateDev(this.state.newDev)
+    .then(() => {
+      getDev(this.props.match.params.id).then(dev => {
+        this.setState({ developer: dev.data });
+      });
+    });
+  };
 
   handleDelete(id) {
     deleteDev(id).then(() => {
@@ -39,6 +58,19 @@ class SingleDev extends Component {
         <h2>Name: {developer.name}</h2>
         <Link to="/appIdeas">App Ideas</Link>
         <br />
+        <br />
+        {/* https://www.meteor.com/tutorials/react/update-and-remove */}
+
+        <form onSubmit={this.handleUpdate}>
+          <input
+            type="text"
+            name="name"
+            placeholder="New Name"
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Edit Name" />
+        </form>
+
         <br />
         <button
           onClick={() => {

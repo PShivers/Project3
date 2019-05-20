@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 //use to make every name link to their details page containing their apps etc
 import { Link } from 'react-router-dom';
-import { getIdeaist, getIdeaists } from '../util';
+// import { getIdeaist, getIdeaists } from '../util';
 
 class Ideaist extends Component {
 
