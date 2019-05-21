@@ -10,6 +10,16 @@ const AppIdeaController = {
     }
   },
 
+  // indexByUser: async (req, res) => {
+  //   try {
+  //     console.log("req.body" +req.body)
+  //     const appIdeas = await AppIdea.find({ownerId:req.body});
+  //     res.json(appIdeas);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
   show: async (req, res) => {
     try {
       console.log("3. " + req.params.id)
@@ -24,6 +34,7 @@ const AppIdeaController = {
 
   create: async (req, res) => {
     try {
+      console.log(req.body)
       const newAppIdea = req.body;
       const savedAppIdea = await AppIdea.create(newAppIdea);
       res.json(savedAppIdea);

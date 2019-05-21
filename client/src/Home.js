@@ -125,7 +125,7 @@ class Home extends Component {
       />
     );
 
-    const NavC = () => <Nav />;
+    // const NavC = () => <Nav />;
 
     const CreateIdeaistC = () => (
       <CreateIdeaist

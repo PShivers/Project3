@@ -14,7 +14,7 @@ class About extends Component {
     return (
       <div>
         <Para>
-          AppBay is the site where wings take dreams. It connects people who
+          AppBay is the site where wings take dream. It connects people who
           know how to build apps(Developers) with people who have a great idea
           for an app, but dont have the time/knowledge to make their idea a
           reality(Ideaists). Eventually their will be a way for developers to

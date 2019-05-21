@@ -7,7 +7,7 @@ class CreateAppIdea extends Component {
       newAppIdea: {
         name: String,
         description: String,
-        owner: String
+        ownerId: String
       }
     };
   }
@@ -17,6 +17,9 @@ class CreateAppIdea extends Component {
     const attributeValue = event.target.value;
     const newAppIdea = { ...this.state.newAppIdea };
     newAppIdea[attributeName] = attributeValue;
+    console.log(this.props.match.params.id)
+    const ownerId = this.props.match.params.id
+    newAppIdea.ownerId = ownerId
     this.setState({ newAppIdea },()=>{console.log(this.state.newAppIdea)});
   };
 
@@ -45,7 +48,7 @@ class CreateAppIdea extends Component {
             />
           </div>
           <div>
-            <input type="submit" value="Create New Ideaist" />
+            <input type="submit" value="Create App Idea" />
           </div>
         </form>
       </div>

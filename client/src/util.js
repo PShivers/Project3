@@ -73,3 +73,8 @@ export function getAppIdea(id) {
   console.log('2. ' + id);
   return axios.get(`/appIdeas/${id}`);
 }
+
+// export function getAppIdeasByOwner(id) {
+//   console.log('2. ' + id);
+//   return axios.get(`/appIdeas/${id}`);
+// }

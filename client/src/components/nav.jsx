@@ -12,6 +12,7 @@ const Title = styled.h1`
      1px 1px 0 #FFF;
   font-family: 'Source Sans Pro', sans-serif;
 `
+
 const Navi = styled.div`
 background-image: url(${img});
 height: 20vh
@@ -29,7 +30,7 @@ class Nav extends Component {
       <div className="nav">
         <Navi>
         <Title>appBay</Title>
-        <Link to="/about" >About appBae</Link>
+        <Link to="/about" >About appBay</Link>
         
         <Link to="/ideaists" >Ideaists</Link>
        

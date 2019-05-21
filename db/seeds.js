@@ -7,21 +7,21 @@ Devs.deleteMany()
   .then(() => {
     const Dev1 = new Devs({
       name: "Dev1",
-      appIdeas: "we will see"
+      appsInProgress: "we will see"
     });
     return Dev1.save();
   })
   .then(() => {
     const Dev2 = new Devs({
       name: "Dev2",
-      appIdeas: "Brazzers 4 kidz"
+      appsInProgress: "Something cool"
     });
     return Dev2.save();
   })
   .then(() => {
     const Dev3 = new Devs({
       name: "Dev3",
-      appIdeas: "Peter Pan Fanclub "
+      appsInProgress: "Peter Pan Fanclub "
     });
     return Dev3.save();
   });
@@ -38,7 +38,7 @@ Ideaist.deleteMany()
   .then(() => {
     const Joe = new Ideaist({
       name: "Joe",
-      appIdeas: "Brazzers 4 kidz"
+      appIdeas: "Tv Dead Pool"
     });
     return Joe.save();
   })
@@ -56,7 +56,7 @@ AppIdea.deleteMany()
     const nea = new AppIdea({
       name: "Nea",
       description:
-        "Nea is a sleep tracking app that aim to improve sleep quality through data."
+        "Nea is a sleep tracking app that aim to improve sleep quality through data.",
     });
     return nea.save();
   })

@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 // import AppIdeas from './appIdeas';
 // import { getAppIdeas } from '../util.js';
 
-import { getIdeaist, deleteIdeaist, updateIdeaist } from '../util.js';
+import {
+  getIdeaist,
+  deleteIdeaist,
+  updateIdeaist,
+  // getAppIdeasByOwner
+} from '../util.js';
+
+const List = styled.ul`
+  list-style-type: none;
+`;
 
 class Ideaist extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newIdeaist: {},
-      ideaist: []
+      ideaist: [],
+      appIdeas: []
     };
   }
 
   componentDidMount() {
     getIdeaist(this.props.match.params.id).then(ideaist => {
-      this.setState({ ideaist: ideaist.data });
+      // getAppIdeasByOwner(this.props.match.params.id).then(apps => {
+        // console.log(this.state.apps)
+        this.setState({
+          ideaist: ideaist.data,
+          // appIdeas: apps.data
+        });
+      // });
     });
   }
 
@@ -33,7 +50,6 @@ class Ideaist extends Component {
     newIdeaist[attributeName] = attributeValue;
     newIdeaist._id = this.state.ideaist._id;
     this.setState({ newIdeaist: newIdeaist }, function() {
-      // console.log(this.state.ideaist);
       console.log(this.state.newIdeaist);
     });
   };
@@ -41,8 +57,7 @@ class Ideaist extends Component {
   handleUpdate = event => {
     event.preventDefault();
     console.log('update clicked');
-    updateIdeaist(this.state.newIdeaist)
-    .then(() => {
+    updateIdeaist(this.state.newIdeaist).then(() => {
       getIdeaist(this.props.match.params.id).then(ideaist => {
         this.setState({ ideaist: ideaist.data });
       });
@@ -50,7 +65,6 @@ class Ideaist extends Component {
   };
 
   render() {
-    // console.log(this.props)
     const ideaist = this.state.ideaist;
     let linkVar = `/appideas/${ideaist._id}`;
     return (
@@ -58,6 +72,20 @@ class Ideaist extends Component {
         <h1>Ideaist Details</h1>
         <h2>Name: {ideaist.name}</h2>
         <Link to={linkVar}>App Ideas</Link>
+        <div className="listOfIdeaists">
+          <List>
+            {this.props.state.appIdeas.map(appIdeas => {
+              let linkVar = `/appIdeas/app/${appIdeas._id}`;
+              return (
+                <li key={appIdeas._id}>
+                  <h2>
+                    <Link to={linkVar}>{appIdeas.name}</Link>
+                  </h2>
+                </li>
+              );
+            })}
+          </List>
+        </div>
         <br />
         <br />
         {/* https://www.meteor.com/tutorials/react/update-and-remove */}
