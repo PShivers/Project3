@@ -60,18 +60,16 @@ export function deleteDev(id) {
 //====  App Ideas ==============
 //==============================
 
-export function getApps() {
+export function getAppIdeas() {
   return axios.get('/appIdeas');
 }
 
-//2.
-// export function queryTVMazeAPI(query) {
-//     // console.log("2. queryTVMazeAPI in util.js = " + query);
-//     return axios.get('./shows?q=' + query);
-// }
+export function createAppIdea(newAppIdea) {
+  console.log(newAppIdea);
+  return axios.post('/appIdeas', newAppIdea);
+}
 
-// //2.
-// export function addFavoriteMovie(movie) {
-//     console.log('2. util.js passes in this movie id: ' + movie);
-//     return axios.post('./favorites', movie);
-// }
+export function getAppIdea(id) {
+  console.log('2. ' + id);
+  return axios.get(`/appIdeas/${id}`);
+}

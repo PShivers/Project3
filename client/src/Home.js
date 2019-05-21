@@ -10,6 +10,8 @@ import Devs from './components/devs';
 import CreateDev from './components/createDev';
 import SingleDev from './components/singleDev';
 import AppIdeas from './components/appIdeas';
+import SingleAppIdea from './components/singleAppIdea';
+import CreateAppIdea from './components/createAppIdea';
 import Err from './components/error';
 import {
   createIdeaist,
@@ -18,21 +20,27 @@ import {
   // updateIdeaist,
   getDevs,
   createDev,
-  getApps
+  getAppIdeas,
+  createAppIdea
 } from './util.js';
-import img from '../src/images/memphis-mini-dark.png';
+import img from '../src/images/memphis-mini.png';
 
-const Main = styled.div`
+const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  color: papayawhip;
 `;
 
 const BGImg = styled.div`
   background-image: url(${img});
   height: 100vh;
+  width:80%;
 `;
 
+const Main = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+`
 class Home extends Component {
   state = {
     ideaists: [],
@@ -44,7 +52,7 @@ class Home extends Component {
   componentDidMount() {
     getIdeaists().then(ideaistsList => {
       getDevs().then(devsList => {
-        getApps().then(appIdeasList => {
+        getAppIdeas().then(appIdeasList => {
           this.setState({
             ideaists: ideaistsList.data,
             devs: devsList.data,
@@ -68,7 +76,7 @@ class Home extends Component {
   refresh = () => {
     getIdeaists().then(ideaistsList => {
       getDevs().then(devsList => {
-        getApps().then(appIdeasList => {
+        getAppIdeas().then(appIdeasList => {
           this.setState({
             ideaists: ideaistsList.data,
             devs: devsList.data,
@@ -96,6 +104,15 @@ class Home extends Component {
     });
   };
 
+  //add new appidea to database
+  addNewAppIdea = newIdea => {
+    createAppIdea(newIdea).then(() => {
+      getAppIdeas().then(appIdeaList => {
+        this.setState({ appIdeas: appIdeaList.data });
+      });
+    });
+  };
+
   render() {
     // console.log(this.state)
 
@@ -108,9 +125,12 @@ class Home extends Component {
       />
     );
 
+    const NavC = () => <Nav />;
+
     const CreateIdeaistC = () => (
       <CreateIdeaist
         state={this.state}
+        refresh={this.refresh}
         addNewIdeaistToIdeaistList={this.addNewIdeaistToIdeaistList}
       />
     );
@@ -134,13 +154,26 @@ class Home extends Component {
     const SingleDevC = routeProps => (
       <SingleDev {...routeProps} state={this.state} refresh={this.refresh} />
     );
-    const AppIdeasC = () => <AppIdeas state={this.state} />;
+    const AppIdeasC = routeProps => (
+      <AppIdeas {...routeProps} state={this.state} />
+    );
+    const AppIdeaC = routeProps => (
+      <SingleAppIdea {...routeProps} state={this.state} />
+    );
+    const CreateAppIdeaC = routeProps => (
+      <CreateAppIdea
+        {...routeProps}
+        state={this.state}
+        addNewAppIdea={this.addNewAppIdea}
+      />
+    );
 
     return (
       <Router>
         <div>
-          <BGImg>
-            <Nav />
+          <Wrapper>
+            <BGImg>
+              <Nav refresh={this.refresh} />
             <Main>
               <Switch>
                 <Route exact path="/about" render={AboutC} />
@@ -157,13 +190,20 @@ class Home extends Component {
                 <Route exact path="/devs/create" component={CreateDevC} />
                 <Route exact path="/devs/:id" component={SingleDevC} />
 
-                <Route exact path="/appideas" component={AppIdeasC} />
+                <Route exact path="/appideas/:id" component={AppIdeasC} />
+                <Route exact path="/appideas/app/:id" component={AppIdeaC} />
+                <Route
+                  exact
+                  path="/appideas/create/:id"
+                  component={CreateAppIdeaC}
+                />
 
                 {/* need to get error to override nav bar */}
                 <Route component={Err} />
               </Switch>
-            </Main>
-          </BGImg>
+              </Main>
+            </BGImg>
+          </Wrapper>
         </div>
       </Router>
     );

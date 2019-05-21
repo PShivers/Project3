@@ -5,11 +5,15 @@ import img from '../images/memphis-mini-dark.png';
 
 const Title = styled.h1`
   color: palevioletred;
-  text-shadow: 2px 2px 6px yellow;
+  text-shadow:
+   -1px -1px 0 #FFF,  
+    1px -1px 0 #FFF,
+    -1px 1px 0 #FFF,
+     1px 1px 0 #FFF;
   font-family: 'Source Sans Pro', sans-serif;
 `
-// background-image: url(${img});
 const Navi = styled.div`
+background-image: url(${img});
 height: 20vh
 font-family: 'Source Sans Pro', sans-serif;
 display: flex;
@@ -25,7 +29,7 @@ class Nav extends Component {
       <div className="nav">
         <Navi>
         <Title>appBay</Title>
-        <Link to="/about">About appBae</Link>
+        <Link to="/about" >About appBae</Link>
         
         <Link to="/ideaists" >Ideaists</Link>
        

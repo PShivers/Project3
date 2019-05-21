@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 const Para = styled.p`
   margin: 5% 20%;
+  font-size: 2em;
+  font-family: 'Source Sans Pro', sans-serif;
 `;
 
 class About extends Component {

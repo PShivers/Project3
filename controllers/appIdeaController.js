@@ -12,6 +12,7 @@ const AppIdeaController = {
 
   show: async (req, res) => {
     try {
+      console.log("3. " + req.params.id)
       const appIdeaId = req.params.id;
       const appIdea = await AppIdea.findById(appIdeaId);
       res.json(appIdea);
