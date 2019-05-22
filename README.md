@@ -13,3 +13,15 @@ HTML/CSS/JAVASCRIPT
 MERN ( MongoDB, Express.js, React, and Node.js)
 
 React, React Router, Styled-Components
+
+<details>
+<summary>Component Tree & ERD</summary>
+<br>
+![Component Tree](/readme-images/ComponentTree.png)
+</details>
+
+<details>
+<summary>Wire Frames</summary>
+<br>
+This is how you dropdown.
+</details>
