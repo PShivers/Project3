@@ -6,7 +6,7 @@ AppBay connects people who know how to build apps(Developers) with people who ha
 
 [Trello board](https://trello.com/b/SwN9dDKm/project-3)
 
-## git aTechnologies Used
+## Technologies Used
 
 HTML/CSS/JAVASCRIPT
 
