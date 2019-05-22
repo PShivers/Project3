@@ -10,4 +10,6 @@ AppBay connects people who know how to build apps(Developers) with people who ha
 
 HTML/CSS/JAVASCRIPT
 
+MERN ( MongoDB, Express.js, React, and Node.js)
+
 React, React Router, Styled-Components
