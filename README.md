@@ -23,5 +23,11 @@ React, React Router, Styled-Components
 <details>
 <summary>Wire Frames</summary>
 <br>
-This is how you dropdown.
+![Wire Frame 1](/readme-images/wf1.jpg)
+![Wire Frame 2](/readme-images/wf2.jpg)
+![Wire Frame 3](/readme-images/wf3.jpg)
+![Wire Frame 4](/readme-images/wf4.jpg)
+![Wire Frame 5](/readme-images/wf5.jpg)
+![Wire Frame 6](/readme-images/wf6.jpg)
+
 </details>
