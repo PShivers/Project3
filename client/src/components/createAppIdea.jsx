@@ -17,10 +17,12 @@ class CreateAppIdea extends Component {
     const attributeValue = event.target.value;
     const newAppIdea = { ...this.state.newAppIdea };
     newAppIdea[attributeName] = attributeValue;
-    console.log(this.props.match.params.id)
-    const ownerId = this.props.match.params.id
-    newAppIdea.ownerId = ownerId
-    this.setState({ newAppIdea },()=>{console.log(this.state.newAppIdea)});
+    console.log(this.props.match.params.id);
+    const ownerId = this.props.match.params.id;
+    newAppIdea.ownerId = ownerId;
+    this.setState({ newAppIdea }, () => {
+      console.log(this.state.newAppIdea);
+    });
   };
 
   addNewAppIdea = event => {
@@ -31,7 +33,8 @@ class CreateAppIdea extends Component {
   render() {
     return (
       <div>
-        YOOO
+        <br />
+        <br />
         <form onSubmit={this.addNewAppIdea}>
           <div>
             <input
@@ -40,7 +43,11 @@ class CreateAppIdea extends Component {
               placeholder="App Name"
               onChange={this.handleNewAppIdeaChange}
             />
-            <input
+            <br />
+            <br />
+
+            <textarea
+              rows="4"
               name="description"
               type="text"
               placeholder="App Description"

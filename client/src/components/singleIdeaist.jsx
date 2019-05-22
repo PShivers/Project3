@@ -66,8 +66,7 @@ class Ideaist extends Component {
 
   render() {
     const ideaist = this.state.ideaist;
-    let linkVar = `/appideas/${ideaist._id}`;
-    const linkVar2 = `/appideas/create/${this.props.match.params.id}`
+    const linkVar = `/appideas/create/${this.props.match.params.id}`
 
     return (
       <div>

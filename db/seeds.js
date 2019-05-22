@@ -7,21 +7,21 @@ Devs.deleteMany()
   .then(() => {
     const Dev1 = new Devs({
       name: "Dev1",
-      appsInProgress: "we will see"
+      appsInProgress: []
     });
     return Dev1.save();
   })
   .then(() => {
     const Dev2 = new Devs({
       name: "Dev2",
-      appsInProgress: "Something cool"
+      appsInProgress: []
     });
     return Dev2.save();
   })
   .then(() => {
     const Dev3 = new Devs({
       name: "Dev3",
-      appsInProgress: "Peter Pan Fanclub "
+      appsInProgress: []
     });
     return Dev3.save();
   });
@@ -31,21 +31,21 @@ Ideaist.deleteMany()
   .then(() => {
     const Paul = new Ideaist({
       name: "Paul",
-      appIdeas: "appHole"
+      appIdeas: []
     });
     return Paul.save();
   })
   .then(() => {
     const Joe = new Ideaist({
       name: "Joe",
-      appIdeas: "Tv Dead Pool"
+      appIdeas: []
     });
     return Joe.save();
   })
   .then(() => {
     const Rufio = new Ideaist({
       name: "Rufio",
-      appIdeas: "Peter Pan Fanclub "
+      appIdeas: []
     });
     return Rufio.save();
   });
@@ -64,7 +64,7 @@ AppIdea.deleteMany()
     const excuses = new AppIdea({
       name: "Excuses, excuses",
       description:
-        "Excuses, excuses is a todo list app with a twist. It allows you to put in excuses for any uncompleted items in order to see what kind bullshit you tell yourself to get out of chores."
+        "Excuses, excuses is a todo list app with a twist. It allows you to put in excuses for any uncompleted items in order to see what kind of lies you tell yourself to get out of chores."
     });
     return excuses.save();
   });
