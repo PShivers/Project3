@@ -11,9 +11,23 @@ import {
   // getAppIdeasByOwner
 } from '../util.js';
 
-const List = styled.ul`
-  list-style-type: none;
-`;
+const Wrapper = styled.div`
+
+display: flex;
+flex-direction: column;
+justify-content:center;
+align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  h2 {
+    display
+  }
+
+`
+
 
 class Ideaist extends Component {
   constructor(props) {
@@ -69,7 +83,7 @@ class Ideaist extends Component {
     const linkVar = `/appideas/create/${this.props.match.params.id}`
 
     return (
-      <div>
+      <Wrapper>
         <h1>Ideaist Details</h1>
         <h2>Name: {ideaist.name}</h2>
         
@@ -100,7 +114,7 @@ class Ideaist extends Component {
         <h2 >App Ideas</h2>
       
         <div className="listOfIdeaists">
-          <List>
+          <ol>
             {this.props.state.appIdeas.map(appIdeas => {
               let linkVar = `/appIdeas/app/${appIdeas._id}`;
               return (
@@ -111,10 +125,10 @@ class Ideaist extends Component {
                 </li>
               );
             })}
-          </List>
+          </ol>
           <Link to={linkVar}>Add Idea</Link>
         </div>
-      </div>
+      </Wrapper>
     );
   }
 }

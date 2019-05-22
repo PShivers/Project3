@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
-import img from '../images/memphis-mini-dark.png';
+import img from '../images/black_linen_v2.png';
 
 const Title = styled.h1`
   color: palevioletred;

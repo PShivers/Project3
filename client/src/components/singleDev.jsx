@@ -3,6 +3,24 @@ import React, { Component } from 'react';
 // import { getAppIdeas } from '../util.js';
 import { Link } from 'react-router-dom';
 import { getDev, deleteDev, updateDev } from '../util';
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+
+display: flex;
+flex-direction: column;
+justify-content:center;
+align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+
+  h2 {
+    display
+  }
+
+`
 
 class SingleDev extends Component {
   constructor(props) {
@@ -51,9 +69,9 @@ class SingleDev extends Component {
   render(props) {
     const developer = this.state.developer;
     return (
-      <div>
-        <h1>Developer's Details:</h1>
-        <h2>Name: {developer.name}</h2>
+      <Wrapper>
+        <h1>Developer's Details</h1>
+        <h2>{developer.name}</h2>
         {/* https://www.meteor.com/tutorials/react/update-and-remove */}
 
         
@@ -94,7 +112,7 @@ class SingleDev extends Component {
           </ol>
         </div>
     
-      </div>
+      </Wrapper>
     );
   }
 }

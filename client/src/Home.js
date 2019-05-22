@@ -23,7 +23,7 @@ import {
   getAppIdeas,
   createAppIdea
 } from './util.js';
-import img from '../src/images/memphis-mini.png';
+import img from '../src/images/light_honeycomb.png';
 
 const Wrapper = styled.div`
   display: flex;

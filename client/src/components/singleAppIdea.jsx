@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import { getAppIdea } from '../util';
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  
+`
+
 
 class Idea extends Component {
   constructor(props) {
@@ -30,10 +36,10 @@ class Idea extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <Wrapper>
         <h1>App name: {this.state.appIdea.name}</h1>
         <h2>App description: <br/>{this.state.appIdea.description}</h2>
-      </div>
+      </Wrapper>
     );
   }
 }
