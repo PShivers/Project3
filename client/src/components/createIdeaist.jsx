@@ -20,7 +20,9 @@ class CreateIdeaist extends Component {
 
   addNewIdeaist = event => {
     event.preventDefault();
-    this.props.addNewIdeaistToIdeaistList(this.state.newIdeaist).then(this.props.refresh());
+    this.props.addNewIdeaistToIdeaistList(this.state.newIdeaist);
+    this.props.refresh();
+
   };
 
   render() {

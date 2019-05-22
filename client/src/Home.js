@@ -176,7 +176,7 @@ class Home extends Component {
               <Nav refresh={this.refresh} />
             <Main>
               <Switch>
-                <Route exact path="/about" render={AboutC} />
+                <Route exact path="/" render={AboutC} />
 
                 <Route exact path="/ideaists" component={IdeaistsC} />
                 <Route

@@ -54,10 +54,9 @@ class SingleDev extends Component {
       <div>
         <h1>Developer's Details:</h1>
         <h2>Name: {developer.name}</h2>
-        <Link to="/appIdeas">App Ideas</Link>
-        <br />
-        <br />
         {/* https://www.meteor.com/tutorials/react/update-and-remove */}
+
+        
 
         <form onSubmit={this.handleUpdate}>
           <input
@@ -68,7 +67,6 @@ class SingleDev extends Component {
           />
           <input type="submit" value="Edit Name" />
         </form>
-
         <br />
         <Link
           to="../devs"
@@ -76,8 +74,26 @@ class SingleDev extends Component {
             this.handleDelete(this.props.match.params.id);
           }}
         >
-          Delete Ideaist
+          DELETE Developer Account
         </Link>
+        <br />
+        <h2>Apps In Progress</h2>
+        
+        <div className="listOfIdeaists">
+          <ol>
+            {this.props.state.appIdeas.map(appIdeas => {
+              let linkVar = `/appIdeas/app/${appIdeas._id}`;
+              return (
+                <li key={appIdeas._id}>
+                  <h2>
+                    <Link to={linkVar}>{appIdeas.name}</Link>
+                  </h2>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+    
       </div>
     );
   }

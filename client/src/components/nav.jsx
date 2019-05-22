@@ -30,7 +30,7 @@ class Nav extends Component {
       <div className="nav">
         <Navi>
         <Title>appBay</Title>
-        <Link to="/about" >About appBay</Link>
+        <Link to="/" >About appBay</Link>
         
         <Link to="/ideaists" >Ideaists</Link>
        

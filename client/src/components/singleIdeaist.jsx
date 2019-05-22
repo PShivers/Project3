@@ -67,27 +67,14 @@ class Ideaist extends Component {
   render() {
     const ideaist = this.state.ideaist;
     let linkVar = `/appideas/${ideaist._id}`;
+    const linkVar2 = `/appideas/create/${this.props.match.params.id}`
+
     return (
       <div>
         <h1>Ideaist Details</h1>
         <h2>Name: {ideaist.name}</h2>
-        <Link to={linkVar}>App Ideas</Link>
-        <div className="listOfIdeaists">
-          <List>
-            {this.props.state.appIdeas.map(appIdeas => {
-              let linkVar = `/appIdeas/app/${appIdeas._id}`;
-              return (
-                <li key={appIdeas._id}>
-                  <h2>
-                    <Link to={linkVar}>{appIdeas.name}</Link>
-                  </h2>
-                </li>
-              );
-            })}
-          </List>
-        </div>
-        <br />
-        <br />
+        
+        
         {/* https://www.meteor.com/tutorials/react/update-and-remove */}
 
         <form onSubmit={this.handleUpdate}>
@@ -107,8 +94,27 @@ class Ideaist extends Component {
             this.handleDelete(this.props.match.params.id);
           }}
         >
-          DELETE Account
+          DELETE Ideaist Account
         </Link>
+        <br />
+        <br />
+        <h2 >App Ideas</h2>
+      
+        <div className="listOfIdeaists">
+          <List>
+            {this.props.state.appIdeas.map(appIdeas => {
+              let linkVar = `/appIdeas/app/${appIdeas._id}`;
+              return (
+                <li key={appIdeas._id}>
+                  <h2>
+                    <Link to={linkVar}>{appIdeas.name}</Link>
+                  </h2>
+                </li>
+              );
+            })}
+          </List>
+          <Link to={linkVar}>Add Idea</Link>
+        </div>
       </div>
     );
   }
