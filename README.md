@@ -18,6 +18,7 @@ React, React Router, Styled-Components
 <summary>Component Tree & ERD</summary>
 <br>
 ![Component Tree](/readme-images/ComponentTree.png)
+![Entity Relationship Diagram](/readme-images/ERD.png)
 </details>
 
 <details>

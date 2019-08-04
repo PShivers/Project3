@@ -5,38 +5,34 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // import { getIdeaist, getIdeaists } from '../util';
 
-const List = styled.ul`
-list-style-type: none;
-`
+// const List = styled.ul`
+//   list-style-type: none;
+// `;
 
 const IdeaistMain = styled.div`
- display: flex;
- flex-direction: column;
- jusify content: center;
- align-item: center;
-`
-
-
+  display: flex;
+  flex-direction: column;
+  jusifycontent: center;
+  align-item: center;
+`;
 
 class Ideaist extends Component {
   render() {
     return (
       <IdeaistMain>
-        <h1>Ideaists</h1>
+        <h1 className="ui header">Ideaists</h1>
 
-        <div className="listOfIdeaists">
-          <List>
-            {this.props.state.ideaists.map(ideaist => {
-              let linkVar = `/ideaists/${ideaist._id}`;
-              return (
-                <li key={ideaist._id}>
-                  <h2>
-                    <Link to={linkVar}>{ideaist.name}</Link>
-                  </h2>
-                </li>
-              );
-            })}
-          </List>
+        <div className="listOfIdeaists ui divided list">
+          {this.props.state.ideaists.map(ideaist => {
+            let linkVar = `/ideaists/${ideaist._id}`;
+            return (
+              <li className="item" key={ideaist._id}>
+                <h2>
+                  <Link to={linkVar}>{ideaist.name}</Link>
+                </h2>
+              </li>
+            );
+          })}
         </div>
 
         <h4>

@@ -17,7 +17,6 @@ import {
   createIdeaist,
   getIdeaists,
   deleteIdeaist,
-  // updateIdeaist,
   getDevs,
   createDev,
   getAppIdeas,
